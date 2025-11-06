@@ -1,0 +1,163 @@
+/* --------------------------------------------------
+   Memory Game — Core Layout and Style
+-------------------------------------------------- */
+
+/* === Global Reset === */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* === Body Layout === */
+body {
+    background-color: #0f0f0f;
+    /* dark background */
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* === Game Container === */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+/* === Header (title + stats + restart) === */
+.game-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 25px;
+    gap: 10px;
+}
+
+.game-header h1 {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+/* stats row (moves/time + button) */
+.game-stats {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    font-size: 1rem;
+}
+
+/* Restart button */
+#restartBtn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+#restartBtn:hover {
+    background-color: #555;
+}
+
+/* === Game Board (Grid) === */
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    gap: 12px;
+    perspective: 1000px;
+    /* enable 3D flip depth */
+}
+
+/* === Card Wrapper === */
+.card {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    position: relative;
+}
+
+/* === Flip Animation === */
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+/* flipped state */
+.card.flip .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* === Card Faces === */
+.card-front,
+.card-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    backface-visibility: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* back (default) */
+.card-back {
+    background-color: #1c1c1c;
+    border: 2px solid #2e2e2e;
+    transition: transform 0.3s ease;
+}
+
+/* front (shows when rotated) */
+.card-front {
+    transform: rotateY(180deg);
+}
+
+/* === Image Styling === */
+.card-front img,
+.card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* === Hover Feedback === */
+.card:hover .card-back {
+    transform: scale(1.05);
+}
+
+/* === Responsive Layout === */
+@media (max-width: 500px) {
+    .game-board {
+        grid-template-columns: repeat(4, 70px);
+        gap: 8px;
+    }
+
+    .card {
+        width: 70px;
+        height: 70px;
+    }
+
+    .game-header h1 {
+        font-size: 1.4rem;
+    }
+
+    .game-stats {
+        gap: 8px;
+        font-size: 0.9rem;
+    }
+}
