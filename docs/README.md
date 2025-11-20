@@ -1,4 +1,4 @@
-# 🪶 Caveman Memory Game
+# 🪶 Memory Game
 
 A minimal dark-themed **memory card game** built with **HTML, CSS, and JavaScript**.  
 Flip the cards, find matching pairs, and race against time.
@@ -60,7 +60,7 @@ memory-game/
 
 1. Clone or download the project:
    ```bash
-   git clone https://github.com/yourusername/memory-game.git
+   git clone https://github.com/Majesticats/Its-not-Mappening
    ```
 2. Open `index.html` directly in your browser — no build tools required.
 
